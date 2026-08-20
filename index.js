@@ -27,7 +27,7 @@ const INVENTORY = [
  * @returns {number[]} ids of given items
  */
 function getIds(items) {
-  // TODO
+  return items.map((Item) => Item.id);
 }
 
 /**
@@ -35,7 +35,7 @@ function getIds(items) {
  * @returns {string[]} categories of given items
  */
 function getCategories(items) {
-  // TODO
+  return items.map((Item) => Item.category);
 }
 
 /**
@@ -49,6 +49,7 @@ function getCategories(items) {
  */
 function getSkus(items) {
   // TODO
+  return items.map((item) => "${Item.id}#$[Item.name]#${Item.name.length}");
 }
 
 /**
@@ -56,7 +57,7 @@ function getSkus(items) {
  * @returns {Item[]} all items in the "fruit" category
  */
 function getFruits(items) {
-  // TODO
+  return items.filter((item) => items.category === "fruit");
 }
 
 /**
@@ -66,6 +67,7 @@ function getFruits(items) {
  */
 function getItemsByCategory(items, category) {
   // TODO
+  return items.filter((Item) => Item.category === category);
 }
 
 /**
