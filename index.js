@@ -48,8 +48,7 @@ function getCategories(items) {
  * @returns {string[]} SKUs of given items
  */
 function getSkus(items) {
-  // TODO
-  return items.map((item) => "${Item.id}#$[Item.name]#${Item.name.length}");
+  return items.map((item) => `${item.id}#${item.name}#${item.name.length}`);
 }
 
 /**
@@ -57,7 +56,7 @@ function getSkus(items) {
  * @returns {Item[]} all items in the "fruit" category
  */
 function getFruits(items) {
-  return items.filter((item) => items.category === "fruit");
+  return items.filter((item) => item.category === "fruit");
 }
 
 /**
@@ -66,7 +65,6 @@ function getFruits(items) {
  * @returns {Item[]} all items in the given category
  */
 function getItemsByCategory(items, category) {
-  // TODO
   return items.filter((Item) => Item.category === category);
 }
 
@@ -76,7 +74,7 @@ function getItemsByCategory(items, category) {
  * @returns {Item[]} all cheap items
  */
 function getCheapItems(items) {
-  // TODO
+  return items.filter((Item) => Item.price <= 2.5);
 }
 
 /**
@@ -84,7 +82,7 @@ function getCheapItems(items) {
  * @returns {number} the total quantity of all items given
  */
 function countItems(items) {
-  // TODO
+  return items.reduce((total, Item) => total + Item.quantity, 0);
 }
 
 /**
@@ -92,7 +90,7 @@ function countItems(items) {
  * @returns {number} the cost of purchasing every single item
  */
 function getTotalCost(items) {
-  // TODO
+  return items.reduce((total, Item) => total + Item.price * Item.quantity, 0);
 }
 
 /**
@@ -100,5 +98,8 @@ function getTotalCost(items) {
  * @returns {Item} the item with the highest price
  */
 function getMostExpensiveItem(items) {
-  // TODO
+  if (items.length === 0) return null;
+  return items.reduce((mostExpensive, item) => {
+    return item.price > mostExpensive.price ? item : mostExpensive;
+  });
 }
